@@ -18,15 +18,10 @@ namespace haris_edin_rs1.Models
         public int Brend_id { get; set; }
         public Brend brend { get; set; }
 
-        [ForeignKey(nameof(spol))]
-        public int Spol_id { get; set; }
-        public Spol spol { get; set; }
-
+     
         [ForeignKey(nameof(korisnik))]
         public int korisnik_id { get; set; }
         public Korisnik korisnik { get; set; }
-
-
 
 
         public string NazivArtikla { get; set; }
@@ -40,14 +35,25 @@ namespace haris_edin_rs1.Models
         //Detaljan opis  kao properti 
         //Slike
 
-
-
         [ForeignKey(nameof(stanje))]
         public int Stanje_id { get; set; }
         public Stanje stanje { get; set; }
 
-        //public ICollection <ArtikalSlike> ArtikalSlike { get; set; }
         public string SlikaArtikla { get; set; }
+
+        public string Godiste { get; set; }
+        public string  Kilometraza { get; set; }
+        public bool Registrovan { get; set; }
+        public bool Plin { get; set; }
+        public bool Klima { get; set; }
+        public bool ABS { get; set; }
+        public string Gorivo { get; set; }
+        public string Model { get; set; }
+        public string DetaljanOpis { get; set; }
+        
+
+
+
 
 
     }

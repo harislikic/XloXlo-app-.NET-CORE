@@ -14,7 +14,6 @@ namespace haris_edin_rs1.Models
        
         public string Ime { get; set; }
         public string Prezime { get; set; }
-        [RegularExpression(@"^[a-zA-Z0-9_.+-]+@[a-zA-0-9-]+\.[a-zA-Z0-9-.]+$")]
         public string Email { get; set; }
         public DateTime DatumRodjenja { get; set; }
         public string Adresa { get; set; }
@@ -22,7 +21,12 @@ namespace haris_edin_rs1.Models
         public int Grad_id { get; set; }
         public Grad grad { get; set; }
 
+        [ForeignKey(nameof(spol))]
+        public int Spol_id { get; set; }
+        public Spol spol { get; set; }
 
-     
+        public string KontaktTelefon { get; set; }
+        public string SlikaProfila { get; set; }
+
     }
 }

@@ -11,7 +11,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-
+using MimeKit;
+using MailKit.Net.Smtp;
+using System.Threading;
 
 namespace haris_edin_rs1.Controllers
 {
@@ -52,7 +54,7 @@ namespace haris_edin_rs1.Controllers
 
             var novikorisnik = new Korisnik()
             {
-
+                
                 Ime = x.ime,
                 Prezime = x.prezime,
                 Email = x.email,
@@ -60,11 +62,48 @@ namespace haris_edin_rs1.Controllers
                 Adresa = x.adresa,
                 KorisnickoIme = x.korisnickoime,
                 Lozinka = x.lozinka,
-                Grad_id = x.grad_id
-
+                Grad_id = x.grad_id,
+                Spol_id = x.spol_id,
+                KontaktTelefon =x.KontaktTelefon,
+                SlikaProfila = "https://localhost:44308/" + "uploads/" +"user-icon.jpg",
 
             };
+           
 
+            if (x.SlikaArtikla != null)
+            {
+                string ekstenzija = Path.GetExtension(x.SlikaArtikla.FileName);
+
+                var filename = $"{Guid.NewGuid()}{ekstenzija}";
+
+                x.SlikaArtikla.CopyTo(new FileStream("wwwroot/" + "uploads/" + filename, FileMode.Create));
+                novikorisnik.SlikaProfila = "https://localhost:44308/" + "uploads/" + filename;
+            }
+
+
+            Thread email = new Thread(delegate ()
+            {
+
+                DateTime datum = DateTime.Now;
+
+            var poruka = new MimeMessage();
+            poruka.From.Add(new MailboxAddress("Xloxlo Kompanija", "xloxlohe@gmail.com"));
+            poruka.To.Add(new MailboxAddress(x.ime, x.email));
+            poruka.Subject = "Obavjestenje o registraciji";
+            poruka.Body = new TextPart("plain")
+            {
+                Text = "Postovani, danas, " + datum + " ste se registrovali na nasu stranicu. "
+            };
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.gmail.com", 587, false);
+                client.Authenticate("xloxlohe@gmail.com", "Hehehehe");
+                client.Send(poruka);
+                client.Disconnect(true);
+            }
+            });
+            email.IsBackground = true;
+            email.Start();
 
             _dbContext.Add(novikorisnik);
             _dbContext.SaveChanges();
@@ -74,7 +113,7 @@ namespace haris_edin_rs1.Controllers
         //update
 
         [HttpPost("{id}")]
-        public IActionResult Update(int id, [FromBody] KorisniciUpdateAddVM x)
+        public IActionResult Update(int id, [FromForm] KorisniciUpdateAddVM x)
         {
 
             //ako je administrator ima opciju da edituje korisnicke racune 
@@ -92,11 +131,66 @@ namespace haris_edin_rs1.Controllers
             korisnik.Email = x.Email;
             korisnik.DatumRodjenja = x.DatumRodjenja;
             korisnik.Adresa = x.Adresa;
+            korisnik.KorisnickoIme = x.korisnickoime;
+            korisnik.Lozinka = x.lozinka;
+            korisnik.Grad_id = x.Grad_id;
+            korisnik.Spol_id = x.spol_id;
+            korisnik.KontaktTelefon = x.KontaktTelefon;
+
+
+            if (x.SlikaArtikla != null)
+            {
+                string ekstenzija = Path.GetExtension(x.SlikaArtikla.FileName);
+
+                var filename = $"{Guid.NewGuid()}{ekstenzija}";
+
+                x.SlikaArtikla.CopyTo(new FileStream("wwwroot/" + "uploads/" + filename, FileMode.Create));
+                korisnik.SlikaProfila = "https://localhost:44308/" + "uploads/" + filename;
+            }
+            _dbContext.SaveChanges();
+            return Get(id);
+        }
+        public class PasswordChange
+        {
+
+            public string Lozinka { get; set; }
+        }
+        [HttpPost("{id}")]
+        public IActionResult ResetPassword(int id, [FromBody] PasswordChange x) 
+        {
+
+            Korisnik korisnik = _dbContext.Korisnici.FirstOrDefault(s => s.Id == id);
+            Thread email = new Thread(delegate ()
+            {
+                DateTime datum = DateTime.Now;
+
+                var poruka = new MimeMessage();
+                poruka.From.Add(new MailboxAddress("Xloxlo Kompanija", "xloxlohe@gmail.com"));
+                poruka.To.Add(new MailboxAddress(korisnik.Ime, korisnik.Email));
+                poruka.Subject = "Obavjestenje o promjeni lozinke";
+                poruka.Body = new TextPart("plain")
+                {
+                    Text = "Postovani, danas, " + datum + " ste promjenili svoju lozinku. Ukoliko niste u toku sa tom akcijom" +
+                    " molimo da nam se obratite!"
+                };
+                using (var client = new SmtpClient())
+                {
+                    client.Connect("smtp.gmail.com", 587, false);
+                    client.Authenticate("xloxlohe@gmail.com", "Hehehehe");
+                    client.Send(poruka);
+                    client.Disconnect(true);
+                }
+            });
+            email.IsBackground = true;
+            email.Start();
+
+            if (korisnik == null)
+                return BadRequest("Pogresan ID");
+            korisnik.Lozinka = x.Lozinka;
 
             _dbContext.SaveChanges();
             return Get(id);
         }
-
 
 
         /*[HttpGet]

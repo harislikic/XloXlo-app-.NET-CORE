@@ -28,11 +28,11 @@ namespace haris_edin_rs1.Data
         public DbSet<Artikal> Artikal { get; set; }
        
         public DbSet<Stanje>Stanje { get; set; }
-        public DbSet<ArtikalSlike> ArtikalSlike { get; set; }
+        public DbSet<Poruke> Poruke { get; set; }
 
-        public DbSet<Pitanje> Pitanje { get; set; }
+        public DbSet<Komentar> Komentar { get; set; }
 
-
+        public DbSet<ArtikalSlika>ArtikalSlika { get; set; }
 
 
 

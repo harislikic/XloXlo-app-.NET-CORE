@@ -1,4 +1,5 @@
 using haris_edin_rs1.Data;
+using haris_edin_rs1.EmailConfig;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -20,8 +21,8 @@ namespace haris_edin_rs1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-           
+            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+            services.AddTransient<IEmailService, EmailService>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
@@ -40,6 +41,8 @@ namespace haris_edin_rs1
                     Description = "API za bazu"
                 });
             });
+
+          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -95,6 +98,14 @@ namespace haris_edin_rs1
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
+
+            
+
+
+
+
+
         }
+
     }
 }
