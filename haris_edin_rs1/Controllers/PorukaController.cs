@@ -31,7 +31,7 @@ namespace haris_edin_rs1.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add ([FromForm] PorukaAddVM x)
+        public IActionResult Add ([FromBody] PorukaAddVM x)
         {
             var novaPoruka = new Poruke()
             {

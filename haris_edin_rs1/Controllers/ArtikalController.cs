@@ -73,7 +73,7 @@ namespace haris_edin_rs1.Controllers
       
         //add
         [HttpPost]
-        public Artikal Add([FromForm] ArtikalAddVM x)
+        public Artikal Add([FromBody] ArtikalAddVM x)
         {
             
             var noviArtikal = new Artikal()
@@ -98,20 +98,20 @@ namespace haris_edin_rs1.Controllers
                 DetaljanOpis = x.DetaljanOpis
             };
 
-            //var baseURL = httpContextAccessor.HttpContext.Request.Scheme + "://" +
-            //      httpContextAccessor.HttpContext.Request.Host +
-            //      httpContextAccessor.HttpContext.Request.PathBase;
-            //if(x.SlikaArtikla!=null)
-            //{
-            // string ekstenzija = Path.GetExtension(x.SlikaArtikla.FileName);
+            var baseURL = httpContextAccessor.HttpContext.Request.Scheme + "://" +
+                  httpContextAccessor.HttpContext.Request.Host +
+                  httpContextAccessor.HttpContext.Request.PathBase;
+            if (x.SlikaArtikla != null)
+            {
+                string ekstenzija = Path.GetExtension(x.SlikaArtikla.FileName);
 
-            //var filename = $"{Guid.NewGuid()}{ekstenzija}";
+                var filename = $"{Guid.NewGuid()}{ekstenzija}";
 
-            //x.SlikaArtikla.CopyTo(new FileStream("wwwroot/" + "uploads/" + filename, FileMode.Create));
-            //    noviArtikal.SlikaArtikla = "https://localhost:44308/" + "uploads/" + filename;
-            //}
+                x.SlikaArtikla.CopyTo(new FileStream("wwwroot/" + "uploads/" + filename, FileMode.Create));
+                noviArtikal.SlikaArtikla = "https://localhost:44308/" + "uploads/" + filename;
+            }
 
-            
+
 
 
             _dbContext.Artikal.Add(noviArtikal);
@@ -129,8 +129,8 @@ namespace haris_edin_rs1.Controllers
 
 
         [HttpPost("{id}")]
-        public IActionResult DodajSlike(List<IFormFile> files,int id, [FromForm] artikalslikaADDVM x)
-        { 
+        public IActionResult DodajSlike(List<IFormFile> files,int id)
+        {
 
             // var artikalslike = new ArtikalSlika();
             var novalista = new List<ArtikalSlika>();
@@ -166,8 +166,7 @@ namespace haris_edin_rs1.Controllers
                             file.CopyTo(fs);
                             fs.Flush();
                             noviartikallika.Artikal_id = id;
-                            x.ImageName = "https://localhost:44308/" + "uploads/" + newFileName;
-                            noviartikallika.ImageName =  x.ImageName;
+                            noviartikallika.ImageName =  "https://localhost:44308/" + "uploads/" + newFileName;
 
                            
 

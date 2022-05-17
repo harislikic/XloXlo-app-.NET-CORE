@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using MimeKit;
 using MailKit.Net.Smtp;
 using System.Threading;
+using Microsoft.Extensions.FileProviders;
 
 namespace haris_edin_rs1.Controllers
 {
@@ -113,7 +114,7 @@ namespace haris_edin_rs1.Controllers
         //update
 
         [HttpPost("{id}")]
-        public IActionResult Update(int id, [FromForm] KorisniciUpdateAddVM x)
+        public IActionResult Update(int id, [FromBody] KorisniciUpdateAddVM x)
         {
 
             //ako je administrator ima opciju da edituje korisnicke racune 
@@ -129,12 +130,10 @@ namespace haris_edin_rs1.Controllers
             korisnik.Ime = x.Ime;
             korisnik.Prezime = x.Prezime;
             korisnik.Email = x.Email;
-            korisnik.DatumRodjenja = x.DatumRodjenja;
+           
             korisnik.Adresa = x.Adresa;
-            korisnik.KorisnickoIme = x.korisnickoime;
-            korisnik.Lozinka = x.lozinka;
             korisnik.Grad_id = x.Grad_id;
-            korisnik.Spol_id = x.spol_id;
+           
             korisnik.KontaktTelefon = x.KontaktTelefon;
 
 
@@ -149,6 +148,55 @@ namespace haris_edin_rs1.Controllers
             }
             _dbContext.SaveChanges();
             return Get(id);
+        }
+
+        [HttpPost("{id}")]
+
+        public IActionResult DodajSlike(int id,IFormFile file)
+        {
+
+            // var artikalslike = new ArtikalSlika();       
+            Korisnik korisnik = _dbContext.Korisnici.FirstOrDefault(s => s.Id == id);
+
+            if (file != null)
+            {
+
+
+                if (file.Length > 0)
+                {
+                    //Getting FileName
+                    var fileName = Path.GetFileName(file.FileName);
+
+                    //Assigning Unique Filename (Guid)
+                    var myUniqueFileName = Convert.ToString(Guid.NewGuid());
+
+                    //Getting file Extension
+                    var fileExtension = Path.GetExtension(fileName);
+
+                    // concatenating  FileName + FileExtension
+                    var newFileName = String.Concat(myUniqueFileName, fileExtension);
+
+                    // Combines two strings into a path.
+                    var filepath =
+                     new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads")).Root + $@"\{newFileName}";
+
+                    using (FileStream fs = System.IO.File.Create(filepath))
+                    {
+                        file.CopyTo(fs);
+                        fs.Flush();
+                        korisnik.Id = id;
+                        korisnik.SlikaProfila = "https://localhost:44308/" + "uploads/" + newFileName;
+
+
+                    }
+
+
+                    
+                    _dbContext.SaveChanges();
+                    //  _dbContext.UpdateRange();
+                }
+            }
+                    return Ok("u redu");
         }
         public class PasswordChange
         {

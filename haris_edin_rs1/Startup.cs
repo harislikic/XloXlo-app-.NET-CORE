@@ -21,13 +21,29 @@ namespace haris_edin_rs1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+            services.AddCors(options =>
+
+            {
+
+                options.AddPolicy(
+
+                name: "AllowOrigin",
+
+                builder => {
+
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+
+                });
+
+            });
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
             services.AddTransient<IEmailService, EmailService>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-           
+
             services.AddMvc();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -42,7 +58,12 @@ namespace haris_edin_rs1
                 });
             });
 
-          
+            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyMethod().AllowAnyHeader()
+                .WithOrigins("https://localhost:44308/")
+                .AllowCredentials();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +77,7 @@ namespace haris_edin_rs1
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API za bazu");
                 c.RoutePrefix = string.Empty; 
             });
+            app.UseCors("AllowOrigin");
             app.UseCors(
               options => options
               .SetIsOriginAllowed(x => _ = true)
@@ -99,6 +121,7 @@ namespace haris_edin_rs1
                     pattern: "{controller}/{action=Index}/{id?}");
             });
 
+            app.UseCors("CorsPolicy");
             
 
 
