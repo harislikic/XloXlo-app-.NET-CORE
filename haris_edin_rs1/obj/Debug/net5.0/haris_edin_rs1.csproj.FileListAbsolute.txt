@@ -287,3 +287,5 @@ C:\Users\gondz\Documents\GitHub\2088\RS1_Backend\Haris_Edin_appRS1\haris_edin_rs
 C:\Users\gondz\Documents\GitHub\2088\RS1_Backend\Haris_Edin_appRS1\haris_edin_rs1\haris_edin_rs1\bin\Debug\net5.0\MimeKit.dll
 C:\Users\haris\OneDrive\Dokumenti\GitHub\2088\RS1_Backend\Haris_Edin_appRS1\haris_edin_rs1\haris_edin_rs1\bin\Debug\net5.0\MailKit.dll
 C:\Users\haris\OneDrive\Dokumenti\GitHub\2088\RS1_Backend\Haris_Edin_appRS1\haris_edin_rs1\haris_edin_rs1\bin\Debug\net5.0\MimeKit.dll
+C:\Users\gondz\Documents\GitHub\2088\RS1_Backend\Haris_Edin_appRS1\haris_edin_rs1\haris_edin_rs1\bin\Debug\net5.0\Quartz.dll
+C:\Users\haris\OneDrive\Dokumenti\GitHub\2088\RS1_Backend\Haris_Edin_appRS1\haris_edin_rs1\haris_edin_rs1\bin\Debug\net5.0\Quartz.dll

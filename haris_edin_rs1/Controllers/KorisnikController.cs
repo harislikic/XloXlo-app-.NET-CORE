@@ -67,7 +67,7 @@ namespace haris_edin_rs1.Controllers
                 Spol_id = x.spol_id,
                 KontaktTelefon =x.KontaktTelefon,
                 SlikaProfila = "https://localhost:44308/" + "uploads/" +"user-icon.jpg",
-
+                Twoway=false
             };
            
 
@@ -81,30 +81,6 @@ namespace haris_edin_rs1.Controllers
                 novikorisnik.SlikaProfila = "https://localhost:44308/" + "uploads/" + filename;
             }
 
-
-            Thread email = new Thread(delegate ()
-            {
-
-                DateTime datum = DateTime.Now;
-
-            var poruka = new MimeMessage();
-            poruka.From.Add(new MailboxAddress("Xloxlo Kompanija", "xloxlohe@gmail.com"));
-            poruka.To.Add(new MailboxAddress(x.ime, x.email));
-            poruka.Subject = "Obavjestenje o registraciji";
-            poruka.Body = new TextPart("plain")
-            {
-                Text = "Postovani, danas, " + datum + " ste se registrovali na nasu stranicu. "
-            };
-            using (var client = new SmtpClient())
-            {
-                client.Connect("smtp.gmail.com", 587, false);
-                client.Authenticate("xloxlohe@gmail.com", "Hehehehe");
-                client.Send(poruka);
-                client.Disconnect(true);
-            }
-            });
-            email.IsBackground = true;
-            email.Start();
 
             _dbContext.Add(novikorisnik);
             _dbContext.SaveChanges();
@@ -134,8 +110,10 @@ namespace haris_edin_rs1.Controllers
             korisnik.Adresa = x.Adresa;
             korisnik.Grad_id = x.Grad_id;
            
-            korisnik.KontaktTelefon = x.KontaktTelefon;
 
+            korisnik.Adresa = x.Adresa;
+            korisnik.Grad_id = x.Grad_id;
+            korisnik.KontaktTelefon = x.KontaktTelefon;
 
             if (x.SlikaArtikla != null)
             {
@@ -208,33 +186,24 @@ namespace haris_edin_rs1.Controllers
         {
 
             Korisnik korisnik = _dbContext.Korisnici.FirstOrDefault(s => s.Id == id);
-            Thread email = new Thread(delegate ()
-            {
-                DateTime datum = DateTime.Now;
-
-                var poruka = new MimeMessage();
-                poruka.From.Add(new MailboxAddress("Xloxlo Kompanija", "xloxlohe@gmail.com"));
-                poruka.To.Add(new MailboxAddress(korisnik.Ime, korisnik.Email));
-                poruka.Subject = "Obavjestenje o promjeni lozinke";
-                poruka.Body = new TextPart("plain")
-                {
-                    Text = "Postovani, danas, " + datum + " ste promjenili svoju lozinku. Ukoliko niste u toku sa tom akcijom" +
-                    " molimo da nam se obratite!"
-                };
-                using (var client = new SmtpClient())
-                {
-                    client.Connect("smtp.gmail.com", 587, false);
-                    client.Authenticate("xloxlohe@gmail.com", "Hehehehe");
-                    client.Send(poruka);
-                    client.Disconnect(true);
-                }
-            });
-            email.IsBackground = true;
-            email.Start();
-
+          
             if (korisnik == null)
                 return BadRequest("Pogresan ID");
             korisnik.Lozinka = x.Lozinka;
+
+            _dbContext.SaveChanges();
+            return Get(id);
+        }
+        [HttpPost("{id}")]
+        public IActionResult UpdateTwoway(int id, [FromBody] bool x)
+        {
+
+            Korisnik korisnik = _dbContext.Korisnici.FirstOrDefault(s => s.Id == id);
+
+            if (korisnik == null)
+                return BadRequest("Pogresan ID");
+
+            korisnik.Twoway = x;
 
             _dbContext.SaveChanges();
             return Get(id);

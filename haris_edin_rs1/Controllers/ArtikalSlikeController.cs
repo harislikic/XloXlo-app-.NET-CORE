@@ -69,40 +69,21 @@ namespace haris_edin_rs1.Controllers
         //    return fileName;
         //}
 
-        [HttpPost]
-        public IActionResult DodajSlike(List<IFormFile> files)
+        [HttpPost("{id}")]
+        public IActionResult DodajSlike(int id , [FromBody]ProImages x)
         {
-            if (files != null)
+            Korisnik korisnik = _dbContext.Korisnici.FirstOrDefault(s => s.Id == id);
+
+            if (x.Photos != null)
             {
-                foreach (var file in files)
-                {
-                    if (file.Length > 0)
-                    {
-                        //Getting FileName
-                        var fileName = Path.GetFileName(file.FileName);
+                string ekstenzija = Path.GetExtension(x.Photos.FileName);
 
-                        //Assigning Unique Filename (Guid)
-                        var myUniqueFileName = Convert.ToString(Guid.NewGuid());
+                var filename = $"{Guid.NewGuid()}{ekstenzija}";
 
-                        //Getting file Extension
-                        var fileExtension = Path.GetExtension(fileName);
-
-                        // concatenating  FileName + FileExtension
-                        var newFileName = String.Concat(myUniqueFileName, fileExtension);
-
-                        // Combines two strings into a path.
-                        var filepath =
-                         new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads")).Root + $@"\{newFileName}";
-
-                        using (FileStream fs = System.IO.File.Create(filepath))
-                        {
-                            file.CopyTo(fs);
-                            fs.Flush();
-                        }
-
-                    }
-                }
+                x.Photos.CopyTo(new FileStream("wwwroot/" + "uploads/" + filename, FileMode.Create));
+                korisnik.SlikaProfila = "https://localhost:44308/" + "uploads/" + filename;
             }
+            _dbContext.SaveChanges();
             return Ok();
         }
 

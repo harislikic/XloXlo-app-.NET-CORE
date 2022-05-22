@@ -28,5 +28,7 @@ namespace haris_edin_rs1.Models
         public string KontaktTelefon { get; set; }
         public string SlikaProfila { get; set; }
 
+        public bool Twoway { get; set; }
+
     }
 }

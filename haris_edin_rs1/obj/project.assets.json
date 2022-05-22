@@ -737,6 +737,20 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
+      "Quartz/3.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "2.1.1",
+          "System.Configuration.ConfigurationManager": "4.7.0",
+          "System.Diagnostics.DiagnosticSource": "4.7.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Quartz.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Quartz.dll": {}
+        }
+      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3599,6 +3613,24 @@
         "lib/netstandard2.0/BouncyCastle.Crypto.xml",
         "portable.bouncycastle.1.9.0.nupkg.sha512",
         "portable.bouncycastle.nuspec"
+      ]
+    },
+    "Quartz/3.4.0": {
+      "sha512": "N8350OAlQhd8zKg0ARFikGjh3bfAW/CF/KVxu2fTIlAALB/oC1eg54n/QAPYR5ryHuYyDr5G8/Qa4k+D/7OFRQ==",
+      "type": "package",
+      "path": "quartz/3.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net462/Quartz.dll",
+        "lib/net462/Quartz.xml",
+        "lib/net472/Quartz.dll",
+        "lib/net472/Quartz.xml",
+        "lib/netstandard2.0/Quartz.dll",
+        "lib/netstandard2.0/Quartz.xml",
+        "quartz-logo-small.png",
+        "quartz.3.4.0.nupkg.sha512",
+        "quartz.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -8304,24 +8336,25 @@
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.13",
       "MimeKit >= 3.2.0",
       "MySql.Data.EntityFrameworkCore >= 8.0.22",
+      "Quartz >= 3.4.0",
       "Swashbuckle >= 5.6.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\haris\\.nuget\\packages\\": {}
+    "C:\\Users\\gondz\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\haris\\OneDrive\\Dokumenti\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj",
+      "projectUniqueName": "C:\\Users\\gondz\\Documents\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj",
       "projectName": "haris_edin_rs1",
-      "projectPath": "C:\\Users\\haris\\OneDrive\\Dokumenti\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj",
-      "packagesPath": "C:\\Users\\haris\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\haris\\OneDrive\\Dokumenti\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\obj\\",
+      "projectPath": "C:\\Users\\gondz\\Documents\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj",
+      "packagesPath": "C:\\Users\\gondz\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gondz\\Documents\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\haris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gondz\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8379,6 +8412,10 @@
             "target": "Package",
             "version": "[8.0.22, )"
           },
+          "Quartz": {
+            "target": "Package",
+            "version": "[3.4.0, )"
+          },
           "Swashbuckle": {
             "target": "Package",
             "version": "[5.6.0, )"
@@ -8406,7 +8443,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   },

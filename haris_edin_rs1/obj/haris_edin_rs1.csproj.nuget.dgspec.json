@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\haris\\OneDrive\\Dokumenti\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj": {}
+    "C:\\Users\\gondz\\Documents\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\haris\\OneDrive\\Dokumenti\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj": {
+    "C:\\Users\\gondz\\Documents\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\haris\\OneDrive\\Dokumenti\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj",
+        "projectUniqueName": "C:\\Users\\gondz\\Documents\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj",
         "projectName": "haris_edin_rs1",
-        "projectPath": "C:\\Users\\haris\\OneDrive\\Dokumenti\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj",
-        "packagesPath": "C:\\Users\\haris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\haris\\OneDrive\\Dokumenti\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\obj\\",
+        "projectPath": "C:\\Users\\gondz\\Documents\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj",
+        "packagesPath": "C:\\Users\\gondz\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gondz\\Documents\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\haris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gondz\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -72,6 +72,10 @@
               "target": "Package",
               "version": "[8.0.22, )"
             },
+            "Quartz": {
+              "target": "Package",
+              "version": "[3.4.0, )"
+            },
             "Swashbuckle": {
               "target": "Package",
               "version": "[5.6.0, )"
@@ -99,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

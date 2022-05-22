@@ -112,20 +112,59 @@ namespace haris_edin_rs1.Controllers
             }
 
 
-
-
             _dbContext.Artikal.Add(noviArtikal);
             _dbContext.SaveChanges();
             return noviArtikal;
         }
 
 
-       public class artikalslikaADDVM
+        public class artikalslikaADDVM
         {
-            public string ImageName { get; set; }
+            public IFormFile SlikaArtikla { get; set; }
             public int Artikal_id { get; set; }
         }
-   
+
+        [HttpPost("{id}")]
+        public IActionResult DodajSliku(int id, IFormFile file)
+        {
+            Artikal artikal = _dbContext.Artikal.FirstOrDefault(s => s.Id == id);
+            if (file != null)
+            {
+
+                if (file.Length > 0)
+                {
+                    //Getting FileName
+                    var fileName = Path.GetFileName(file.FileName);
+
+                    //Assigning Unique Filename (Guid)
+                    var myUniqueFileName = Convert.ToString(Guid.NewGuid());
+
+                    //Getting file Extension
+                    var fileExtension = Path.GetExtension(fileName);
+
+                    // concatenating  FileName + FileExtension
+                    var newFileName = String.Concat(myUniqueFileName, fileExtension);
+
+                    // Combines two strings into a path.
+                    var filepath =
+                     new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads")).Root + $@"\{newFileName}";
+
+                    using (FileStream fs = System.IO.File.Create(filepath))
+                    {
+                        file.CopyTo(fs);
+                        fs.Flush();
+
+                        artikal.SlikaArtikla = "https://localhost:44308/" + "uploads/" + newFileName;
+
+
+                    }
+
+                }
+            }
+                _dbContext.SaveChanges();
+                return Ok("u redu");
+        }
+
 
 
         [HttpPost("{id}")]
@@ -167,9 +206,6 @@ namespace haris_edin_rs1.Controllers
                             fs.Flush();
                             noviartikallika.Artikal_id = id;
                             noviartikallika.ImageName =  "https://localhost:44308/" + "uploads/" + newFileName;
-
-                           
-
 
                         }
 

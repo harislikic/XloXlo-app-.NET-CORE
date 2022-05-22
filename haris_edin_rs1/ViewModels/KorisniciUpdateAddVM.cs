@@ -15,6 +15,8 @@ namespace haris_edin_rs1.ViewModels
         public string Adresa { get; set; }
         public int Grad_id { get; set; }
     
+      
+    
         public string KontaktTelefon { get; set; }
         public IFormFile SlikaArtikla { get; set; }
     }
