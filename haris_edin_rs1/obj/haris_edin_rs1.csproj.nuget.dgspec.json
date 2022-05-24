@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gondz\\Documents\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj": {}
+    "C:\\Users\\haris\\OneDrive\\Dokumenti\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gondz\\Documents\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj": {
+    "C:\\Users\\haris\\OneDrive\\Dokumenti\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gondz\\Documents\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj",
+        "projectUniqueName": "C:\\Users\\haris\\OneDrive\\Dokumenti\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj",
         "projectName": "haris_edin_rs1",
-        "projectPath": "C:\\Users\\gondz\\Documents\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj",
-        "packagesPath": "C:\\Users\\gondz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gondz\\Documents\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\obj\\",
+        "projectPath": "C:\\Users\\haris\\OneDrive\\Dokumenti\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\haris_edin_rs1.csproj",
+        "packagesPath": "C:\\Users\\haris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\haris\\OneDrive\\Dokumenti\\GitHub\\2088\\RS1_Backend\\Haris_Edin_appRS1\\haris_edin_rs1\\haris_edin_rs1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gondz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\haris\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,18 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AspNetCore.Reporting": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.95.4, )"
+            },
+            "DinkToPdf": {
+              "target": "Package",
+              "version": "[1.0.8, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[3.2.0, )"
@@ -64,6 +76,10 @@
               "target": "Package",
               "version": "[5.0.13, )"
             },
+            "Microsoft.Windows.Compatibility": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "MimeKit": {
               "target": "Package",
               "version": "[3.2.0, )"
@@ -83,6 +99,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "Vonage": {
+              "target": "Package",
+              "version": "[5.10.0, )"
             }
           },
           "imports": [
@@ -103,7 +123,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

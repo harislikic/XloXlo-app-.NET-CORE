@@ -1,3 +1,5 @@
+using DinkToPdf;
+using DinkToPdf.Contracts;
 using Faisal.Schedulers;
 using haris_edin_rs1.Data;
 using haris_edin_rs1.EmailConfig;
@@ -28,8 +30,10 @@ namespace haris_edin_rs1
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {   
-            
+        {
+          
+
+
             // Add Quartz services
             services.AddHostedService<QuartzHostedService>();
             services.AddSingleton<IJobFactory, SingletonJobFactory>();
