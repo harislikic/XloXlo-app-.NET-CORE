@@ -56,7 +56,7 @@
                   <Width>2.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>3.74883cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.5cm</Width>
@@ -338,8 +338,8 @@
             <DataSetName>DataSet1</DataSetName>
             <Top>1.1557cm</Top>
             <Left>3.2512cm</Left>
-            <Height>1.30583cm</Height>
-            <Width>10cm</Width>
+            <Height>1.30584cm</Height>
+            <Width>11.24883cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>

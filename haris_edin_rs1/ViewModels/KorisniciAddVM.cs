@@ -6,18 +6,31 @@ using System.Threading.Tasks;
 
 namespace haris_edin_rs1.ViewModels
 {
-    public class KorisniciAddVM
+    public class ArtikalAddVM
     {
-        public string ime { get; set; }
-        public string prezime { get; set; }
-        public string email { get; set; }
-        public DateTime dtumRodjenja { get; set; }
-        public string adresa { get; set; }
-        public string korisnickoime { get; set; }
-        public string lozinka { get; set; }
-        public int grad_id { get; set; }
-        public int spol_id { get; set; }
-        public string KontaktTelefon { get; set; }
+
+        public int Kategorija_Produkta_id { get; set; }
+        public int Brend_id { get; set; }
+
+        public int Korisnik_id { get; set; }
+        public string NazivArtikla { get; set; }
+        public double Cijena { get; set; }
+
+        public bool Aktivan { get; set; }
+        public DateTime DatumObjave { get; set; }
+        public int Stanje { get; set; }
         public IFormFile SlikaArtikla { get; set; }
+
+        public string Godiste { get; set; }
+        public string Kilometraza { get; set; }
+        public bool Registrovan { get; set; }
+        public bool Plin { get; set; }
+        public bool Klima { get; set; }
+        public bool ABS { get; set; }
+        public string Gorivo { get; set; }
+        public string Model { get; set; }
+        public string DetaljanOpis { get; set; }
+
+
     }
 }
