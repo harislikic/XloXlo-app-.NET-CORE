@@ -10,13 +10,9 @@ namespace haris_edin_rs1.ViewModels
     {
         public string Ime { get; set; }
         public string Prezime { get; set; }
-        public string Email { get; set; }
-     
+        public string Email { get; set; }     
         public string Adresa { get; set; }
         public int Grad_id { get; set; }
-    
-      
-    
         public string KontaktTelefon { get; set; }
         public IFormFile SlikaArtikla { get; set; }
     }

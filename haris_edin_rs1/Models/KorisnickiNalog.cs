@@ -25,6 +25,7 @@ namespace haris_edin_rs1.Models
         
 
         public bool isKorisnik => korisnik != null;
+       // public bool isKorisnik { get; set; }
         public bool isAdmin { get; set; }
 
     }

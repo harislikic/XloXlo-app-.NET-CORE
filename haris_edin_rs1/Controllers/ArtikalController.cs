@@ -108,7 +108,7 @@ namespace haris_edin_rs1.Controllers
                 var filename = $"{Guid.NewGuid()}{ekstenzija}";
 
                 x.SlikaArtikla.CopyTo(new FileStream("wwwroot/" + "uploads/" + filename, FileMode.Create));
-                noviArtikal.SlikaArtikla = "https://localhost:44308/" + "uploads/" + filename;
+                noviArtikal.SlikaArtikla = "https://localhost:5001/" + "uploads/" + filename;
             }
 
 
@@ -151,10 +151,10 @@ namespace haris_edin_rs1.Controllers
 
                     using (FileStream fs = System.IO.File.Create(filepath))
                     {
-                        file.CopyTo(fs);
+                        file.CopyTo(new FileStream("wwwroot/" + "uploads/" + fileName, FileMode.Create));
                         fs.Flush();
 
-                        artikal.SlikaArtikla = "https://localhost:44308/" + "uploads/" + newFileName;
+                        artikal.SlikaArtikla = "https://localhost:5001/" + "uploads/" + newFileName;
 
 
                     }
@@ -184,28 +184,22 @@ namespace haris_edin_rs1.Controllers
 
                     if (file.Length > 0)
                     {
-                        //Getting FileName
-                        var fileName = Path.GetFileName(file.FileName);
+                       
 
-                        //Assigning Unique Filename (Guid)
-                        var myUniqueFileName = Convert.ToString(Guid.NewGuid());
+                        string ekstenzija = Path.GetExtension(file.FileName);
 
-                        //Getting file Extension
-                        var fileExtension = Path.GetExtension(fileName);
+                        var filename = $"{Guid.NewGuid()}{ekstenzija}";
 
-                        // concatenating  FileName + FileExtension
-                        var newFileName = String.Concat(myUniqueFileName, fileExtension);
-
-                        // Combines two strings into a path.
+                       
                         var filepath =
-                         new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads")).Root + $@"\{newFileName}";
+                         new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads")).Root + $@"\{filename}";
                         
                         using (FileStream fs = System.IO.File.Create(filepath))
                         {
-                            file.CopyTo(fs);
+                            file.CopyTo(new FileStream("wwwroot/" + "uploads/" + filename, FileMode.Create));
                             fs.Flush();
                             noviartikallika.Artikal_id = id;
-                            noviartikallika.ImageName =  "https://localhost:44308/" + "uploads/" + newFileName;
+                            noviartikallika.ImageName =  "https://localhost:5001/" + "uploads/" + filename;
 
                         }
 
@@ -262,7 +256,7 @@ namespace haris_edin_rs1.Controllers
                 var filename = $"{Guid.NewGuid()}{ekstenzija}";
 
                 x.SlikaArtikla.CopyTo(new FileStream("wwwroot/" + "uploads/" + filename, FileMode.Create));
-                artikal.SlikaArtikla = "https://localhost:44308/" + "uploads/" + filename;
+                artikal.SlikaArtikla = "https://localhost:5001/" + "uploads/" + filename;
             }
 
 
@@ -335,7 +329,6 @@ namespace haris_edin_rs1.Controllers
             }
            
         }
-
 
 
 

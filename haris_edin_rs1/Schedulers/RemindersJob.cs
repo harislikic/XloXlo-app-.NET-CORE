@@ -32,7 +32,7 @@ namespace Faisal.Schedulers
                 using (var client = new SmtpClient())
                 {
                     client.Connect("smtp.gmail.com", 587, false);
-                    client.Authenticate("xloxlohe@gmail.com", "Hehehehe");
+                     client.Authenticate("xloxlohe@gmail.com", "Hehehehe");
                     client.Send(poruka);
                     client.Disconnect(true);
                 }

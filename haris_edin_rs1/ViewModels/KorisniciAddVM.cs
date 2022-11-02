@@ -1,35 +1,29 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using haris_edin_rs1.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace haris_edin_rs1.ViewModels
 {
-    public class ArtikalAddVM
+    public class KorisniciAddVMM : KorisnickiNalog
     {
+        public string Ime { get; set; }
+        public string Prezime { get; set; }
+        public string Email { get; set; }
+        public DateTime DatumRodjenja { get; set; }
+        public string Adresa { get; set; }
+        [ForeignKey(nameof(grad))]
+        public int Grad_id { get; set; }
+        public Grad grad { get; set; }
 
-        public int Kategorija_Produkta_id { get; set; }
-        public int Brend_id { get; set; }
+        [ForeignKey(nameof(spol))]
+        public int Spol_id { get; set; }
+        public Spol spol { get; set; }
 
-        public int Korisnik_id { get; set; }
-        public string NazivArtikla { get; set; }
-        public double Cijena { get; set; }
+        public string KontaktTelefon { get; set; }
+        public IFormFile SlikaProfila { get; set; }
 
-        public bool Aktivan { get; set; }
-        public DateTime DatumObjave { get; set; }
-        public int Stanje { get; set; }
-        public IFormFile SlikaArtikla { get; set; }
-
-        public string Godiste { get; set; }
-        public string Kilometraza { get; set; }
-        public bool Registrovan { get; set; }
-        public bool Plin { get; set; }
-        public bool Klima { get; set; }
-        public bool ABS { get; set; }
-        public string Gorivo { get; set; }
-        public string Model { get; set; }
-        public string DetaljanOpis { get; set; }
+        public bool Twoway { get; set; }
 
 
     }

@@ -11,6 +11,8 @@ namespace haris_edin_rs1.Models
     {
        
         public string AdministratorIme { get; set; }
+        public bool Twoway { get; set; }
+
 
     }
 }

@@ -30,9 +30,9 @@ namespace haris_edin_rs1.Controllers
             {
                 AdministratorIme = x.administratorime,
                 KorisnickoIme = x.korisnickoime,
-                Lozinka = x.lozinka
-
-
+                Lozinka = x.lozinka,
+                isAdmin = true,
+                
             };
             _dbContext.Add(noviadministrator);
             _dbContext.SaveChanges();
@@ -76,13 +76,13 @@ namespace haris_edin_rs1.Controllers
 
 
 
-        //[HttpGet]
-        //public List<Administrator>GetAll(string adminime)
-        //{
-        //    var data = _dbContext.Administratori
-        //        .Where(x => adminime == null || (x.AdministratorIme).StartsWith(adminime)).AsQueryable();
-        //    return data.Take(100).ToList();
-        //}
+        [HttpGet]
+        public List<Administrator>GetAllAdmins()
+        {
+            var data = _dbContext.Administratori;
+            
+            return data.Take(100).ToList();
+         }
 
     }
 }

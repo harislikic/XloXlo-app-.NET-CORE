@@ -41,7 +41,7 @@ namespace haris_edin_rs1.Controllers
 
         //add
         [HttpPost]
-        public Korisnik Add([FromBody] KorisniciAddVM x)
+        public Korisnik Add([FromBody] KorisniciAddVMM x)
         {
 
             //Provjera da li je korisnik logiran, ako je logiran moci ce dodavati nove ako nije vratit ce se null
@@ -54,31 +54,32 @@ namespace haris_edin_rs1.Controllers
             
 
             var novikorisnik = new Korisnik()
-            {
-                
-                Ime = x.ime,
-                Prezime = x.prezime,
-                Email = x.email,
-                DatumRodjenja = x.dtumRodjenja,
-                Adresa = x.adresa,
-                KorisnickoIme = x.korisnickoime,
-                Lozinka = x.lozinka,
-                Grad_id = x.grad_id,
-                Spol_id = x.spol_id,
+            {              
+                Ime = x.Ime,
+                Prezime = x.Prezime,
+                Email = x.Email,
+                DatumRodjenja = x.DatumRodjenja,
+                Adresa = x.Adresa,
+                KorisnickoIme = x.KorisnickoIme,
+                Lozinka = x.Lozinka,
+                Grad_id = x.Grad_id,
+                Spol_id = x.Spol_id,
                 KontaktTelefon =x.KontaktTelefon,
-                SlikaProfila = "https://localhost:44308/" + "uploads/" +"user-icon.jpg",
-                Twoway=false
+                SlikaProfila = "https://localhost:5001/" + "uploads/" +"user-icon.jpeg",
+                Twoway=false,
+
+
+              
             };
            
-
-            if (x.SlikaArtikla != null)
+            if (x.SlikaProfila != null)
             {
-                string ekstenzija = Path.GetExtension(x.SlikaArtikla.FileName);
+                string ekstenzija = Path.GetExtension(x.SlikaProfila.FileName);
 
                 var filename = $"{Guid.NewGuid()}{ekstenzija}";
 
-                x.SlikaArtikla.CopyTo(new FileStream("wwwroot/" + "uploads/" + filename, FileMode.Create));
-                novikorisnik.SlikaProfila = "https://localhost:44308/" + "uploads/" + filename;
+                x.SlikaProfila.CopyTo(new FileStream("wwwroot/" + "uploads/" + filename, FileMode.Create));
+                novikorisnik.SlikaProfila = "https://localhost:5001/" + "uploads/" + filename;
             }
 
 
@@ -87,7 +88,6 @@ namespace haris_edin_rs1.Controllers
             return novikorisnik;
         }
 
-        //update
 
         [HttpPost("{id}")]
         public IActionResult Update(int id, [FromBody] KorisniciUpdateAddVM x)
@@ -122,7 +122,7 @@ namespace haris_edin_rs1.Controllers
                 var filename = $"{Guid.NewGuid()}{ekstenzija}";
 
                 x.SlikaArtikla.CopyTo(new FileStream("wwwroot/" + "uploads/" + filename, FileMode.Create));
-                korisnik.SlikaProfila = "https://localhost:44308/" + "uploads/" + filename;
+                korisnik.SlikaProfila = "https://localhost:5001/" + "uploads/" + filename;
             }
             _dbContext.SaveChanges();
             return Get(id);
@@ -163,7 +163,7 @@ namespace haris_edin_rs1.Controllers
                         file.CopyTo(fs);
                         fs.Flush();
                         korisnik.Id = id;
-                        korisnik.SlikaProfila = "https://localhost:44308/" + "uploads/" + newFileName;
+                        korisnik.SlikaProfila = "https://localhost:5001/" + "uploads/" + newFileName;
 
 
                     }
@@ -201,7 +201,7 @@ namespace haris_edin_rs1.Controllers
             Korisnik korisnik = _dbContext.Korisnici.FirstOrDefault(s => s.Id == id);
 
             if (korisnik == null)
-                return BadRequest("Pogresan ID");
+                return BadRequest("Pogresan ID.");
 
             korisnik.Twoway = x;
 
@@ -209,29 +209,11 @@ namespace haris_edin_rs1.Controllers
             return Get(id);
         }
 
-
-        /*[HttpGet]
-        public ActionResult<List<Korisnik>> GetAll(string ime_prezime)
-        {
-
-
-
-            var data = _dbContext.Korisnici.Where(x => ime_prezime == null || (x.Ime + " " + x.Prezime)
-            .StartsWith(ime_prezime) || (x.Prezime + " " + x.Ime).StartsWith(ime_prezime))
-                .OrderByDescending(s => s.Prezime).ThenByDescending(s => s.Ime)
-                .AsQueryable();
-            return data.Take(100).ToList();
-
-        }*/
         [HttpGet]
-        public  ActionResult<List<Korisnik>> GetAll2()
-        {
-
-
-
-            var country =  _dbContext.Korisnici.Include(i => i.grad).ToList();
-            return country;
-
+        public  ActionResult<List<Korisnik>> GetAll()
+        { 
+            var Korisnici =  _dbContext.Korisnici.Include(i => i.KorisnickoIme).ToList();
+            return Korisnici;
         }
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
@@ -250,9 +232,5 @@ namespace haris_edin_rs1.Controllers
             _dbContext.SaveChanges();
             return Ok(korisnik);
         }
-
-
-
-
     }
 }

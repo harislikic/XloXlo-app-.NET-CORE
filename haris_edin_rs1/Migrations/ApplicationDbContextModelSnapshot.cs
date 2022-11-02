@@ -311,6 +311,9 @@ namespace haris_edin_rs1.Migrations
                     b.Property<string>("AdministratorIme")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Twoway")
+                        .HasColumnType("bit");
+
                     b.ToTable("Administrator");
                 });
 

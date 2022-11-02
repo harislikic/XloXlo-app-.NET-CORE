@@ -25,9 +25,6 @@ namespace haris_edin_rs1.Controllers
             this._dbContext = dbContext;
         }
 
-
-      
-
         [HttpPost]
         public ActionResult<LoginInformacije> Login([FromBody] LoginVM x)
         {
