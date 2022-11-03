@@ -1,10 +1,14 @@
 ﻿<Properties StartupConfiguration="{D5EBB270-919D-4C9C-968E-889BD12AB81F}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="haris_edin_rs1/Controllers/ArtikalController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="haris_edin_rs1/Controllers/AutentifikacijaController.cs">
     <Files>
       <File FileName="haris_edin_rs1/Controllers/BrandController.cs" Line="36" Column="4" />
       <File FileName="haris_edin_rs1/Controllers/AutentifikacijaController.cs" Line="1" Column="1" />
       <File FileName="haris_edin_rs1/Controllers/ArtikalSlikeController.cs" Line="1" Column="1" />
       <File FileName="haris_edin_rs1/Controllers/ArtikalController.cs" Line="157" Column="101" />
+      <File FileName="haris_edin_rs1/Models/Stanje.cs" Line="1" Column="1" />
+      <File FileName="haris_edin_rs1/Models/LogKretanjePoSistemu.cs" Line="1" Column="1" />
+      <File FileName="haris_edin_rs1/Models/KorisnickiNalog.cs" Line="1" Column="1" />
+      <File FileName="haris_edin_rs1/Controllers/ChatController.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,7 +16,7 @@
           <Node name="haris_edin_rs1" expanded="True">
             <Node name="haris_edin_rs1" expanded="True">
               <Node name="Controllers" expanded="True">
-                <Node name="ArtikalController.cs" selected="True" />
+                <Node name="AutentifikacijaController.cs" selected="True" />
               </Node>
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
@@ -28,9 +32,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/harislikic/Desktop/XloXlo-app-.NET-CORE/haris_edin_rs1/Controllers/ArtikalController.cs" relfile="haris_edin_rs1/Controllers/ArtikalController.cs" line="170" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
