@@ -103,13 +103,26 @@ namespace haris_edin_rs1.Controllers
                   httpContextAccessor.HttpContext.Request.PathBase;
             if (x.SlikaArtikla != null)
             {
-                string ekstenzija = Path.GetExtension(x.SlikaArtikla.FileName);
+                var fileName = Path.GetFileName(x.SlikaArtikla.FileName);
 
-                var filename = $"{Guid.NewGuid()}{ekstenzija}";
+                //Assigning Unique Filename (Guid)
+                var myUniqueFileName = Convert.ToString(Guid.NewGuid());
 
-                x.SlikaArtikla.CopyTo(new FileStream("wwwroot/" + "uploads/" + filename, FileMode.Create));
-                noviArtikal.SlikaArtikla = "https://localhost:5001/" + "uploads/" + filename;
+                //Getting file Extension
+                var fileExtension = Path.GetExtension(fileName);
+
+                // concatenating  FileName + FileExtension
+                var newFileName = String.Concat(myUniqueFileName, fileExtension);
+
+
+              //  string ekstenzija = Path.GetExtension(x.SlikaArtikla.FileName);
+
+               // var filename = $"{Guid.NewGuid()}{ekstenzija}";
+
+                x.SlikaArtikla.CopyTo(new FileStream("wwwroot/" + "uploads/" + newFileName, FileMode.Create));
+                noviArtikal.SlikaArtikla = "https://localhost:5001/" + "uploads/" + newFileName;
             }
+
 
 
             _dbContext.Artikal.Add(noviArtikal);

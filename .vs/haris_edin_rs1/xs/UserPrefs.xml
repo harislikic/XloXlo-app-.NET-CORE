@@ -1,28 +1,32 @@
 ﻿<Properties StartupConfiguration="{D5EBB270-919D-4C9C-968E-889BD12AB81F}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="haris_edin_rs1/Models/EmptyClass.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="haris_edin_rs1/Controllers/ReportController.cs">
     <Files>
       <File FileName="haris_edin_rs1/Controllers/BrandController.cs" Line="36" Column="4" />
       <File FileName="haris_edin_rs1/Controllers/AutentifikacijaController.cs" Line="65" Column="40" />
       <File FileName="haris_edin_rs1/Controllers/ArtikalSlikeController.cs" Line="1" Column="1" />
-      <File FileName="haris_edin_rs1/Controllers/ArtikalController.cs" Line="157" Column="101" />
+      <File FileName="haris_edin_rs1/Controllers/ArtikalController.cs" Line="264" Column="1" />
       <File FileName="haris_edin_rs1/Models/Stanje.cs" Line="1" Column="1" />
       <File FileName="haris_edin_rs1/Models/LogKretanjePoSistemu.cs" Line="1" Column="1" />
       <File FileName="haris_edin_rs1/Models/KorisnickiNalog.cs" Line="1" Column="1" />
       <File FileName="haris_edin_rs1/Controllers/ChatController.cs" Line="1" Column="1" />
-      <File FileName="haris_edin_rs1/Models/EmptyClass.cs" Line="6" Column="27" />
+      <File FileName="haris_edin_rs1/Schedulers/RemindersJob.cs" Line="34" Column="1" />
+      <File FileName="haris_edin_rs1/Program.cs" Line="19" Column="1" />
+      <File FileName="haris_edin_rs1/Controllers/ReportController.cs" Line="50" Column="13" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="haris_edin_rs1" expanded="True">
             <Node name="haris_edin_rs1" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Data" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="EmptyClass.cs" selected="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="ReportController.cs" selected="True" />
               </Node>
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Schedulers" expanded="True" />
-              <Node name="wwwroot" expanded="True" />
+              <Node name="wwwroot" expanded="True">
+                <Node name="uploads" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>

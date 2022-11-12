@@ -47,7 +47,7 @@ namespace haris_edin_rs1.Controllers
             ReportResult result = localReport.Execute(RenderType.Pdf, parameters: parameters);
             var stream = new FileStream(@"Reports/Report1.rdlc", FileMode.Open);
             return File(result.MainStream,  "application/pdf", "report.pdf");
-            //return Ok(podaci);
+            return Ok(podaci);
         }
     }
 

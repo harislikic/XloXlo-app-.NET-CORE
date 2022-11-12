@@ -62,7 +62,7 @@ namespace haris_edin_rs1.Controllers
             AutentifikacijaToken autentifikacijaToken = HttpContext.GetAuthToken();
 
             if (autentifikacijaToken == null)
-                return Ok("Bio je null");
+                return Ok("Bio je null!");
 
             _dbContext.Remove(autentifikacijaToken);
             _dbContext.SaveChanges();
